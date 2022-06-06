@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stroke_poi">2dp</dimen>
+    <dimen name="stroke_2dp">2dp</dimen>
+    <dimen name="stroke">4dp</dimen>
+    <dimen name="text">16dp</dimen>
+    <dimen name="icon_size">48dp</dimen>
+    <dimen name="default_height">48dp</dimen>
+    <dimen name="default_marge">8dp</dimen>
+
+    <!-- calendar -->
+    <dimen name="stroke_separator_hour">1dp</dimen>
+    <dimen name="text_calendar">16sp</dimen>
+</resources>

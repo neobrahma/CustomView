@@ -1,3 +1,31 @@
 <resources>
-    <string name="app_name">CustomView</string>
+    <string name="app_name">Custom View</string>
+
+    <string name="state_switch_on">ON</string>
+    <string name="state_switch_off">OFF</string>
+
+    <string name="content_description_switch_on">Interupteur, la prise est allumée</string>
+    <string name="switch_action_off">eteindre la prise</string>
+    <string name="content_description_switch_off">Interupteur, La prise est éteinte</string>
+    <string name="switch_action_on">allumer la prise</string>
+
+    <string name="content_description_canal_1_switch_on">Canal 1, la prise est allumée</string>
+    <string name="content_description_canal_2_switch_on">Canal 2, la prise est allumée</string>
+    <string name="content_description_canal_1_switch_off">Canal 1, La prise est éteinte</string>
+    <string name="content_description_canal_2_switch_off">Canal 2, La prise est éteinte</string>
+
+    <string name="content_description_joypad">Joystick, Controleur de position de la camera</string>
+    <string name="joypad_action_up">Joystick, deplacer vers le haut</string>
+    <string name="joypad_action_left">Joystick, deplacer vers la gauche</string>
+    <string name="joypad_action_down">Joystick, deplacer vers le bas</string>
+    <string name="joypad_action_right">Joystick, deplacer vers la droite</string>
+
+    <string name="content_description_rc_garage">Telecommande, Gestion du volet</string>
+    <string name="rc_garage_action_up">Telecommande, ouvrir</string>
+    <string name="rc_garage_action_stop">Telecommande, arreter</string>
+    <string name="rc_garage_action_down">Telecommande, fermer</string>
+
+    <string name="content_description_switch_stateless">Interupteur prise sans retour d\'etat</string>
+    <string name="rc_switch_stateless_on">Interupteur, bouton allumer</string>
+    <string name="rc_switch_stateless_off">Interupteur, bouton eteindre</string>
 </resources>
