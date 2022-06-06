@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">CustomView</string>
+
+    <string name="state_switch_on">ON</string>
+    <string name="state_switch_off">OFF</string>
+    <string name="content_description_switch_on">Interupteur, la prise est allumée</string>
+    <string name="switch_action_off">eteindre la prise</string>
+    <string name="content_description_switch_off">Interupteur, La prise est éteinte</string>
+    <string name="switch_action_on">allumer la prise</string>
+
+    <string name="content_description_canal_1_switch_on">Canal 1, la prise est allumée</string>
+    <string name="content_description_canal_2_switch_on">Canal 2, la prise est allumée</string>
+    <string name="content_description_canal_1_switch_off">Canal 1, La prise est éteinte</string>
+    <string name="content_description_canal_2_switch_off">Canal 2, La prise est éteinte</string>
 </resources>
