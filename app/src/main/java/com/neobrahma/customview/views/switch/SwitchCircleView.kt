@@ -5,6 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import androidx.core.content.ContextCompat
 import com.neobrahma.customview.R
+import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.helper.computeDistanceSegment
 import com.neobrahma.customview.views.helper.getVectorBitmapFromDrawable
 

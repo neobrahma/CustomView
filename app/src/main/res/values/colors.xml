@@ -11,7 +11,9 @@
     <color name="purple">#FF604095</color>
     <color name="red">#FFD7225E</color>
     <color name="orange">#FFF59433</color>
+    <color name="orange_alpha">#00F59433</color>
     <color name="blue_dark">#FF0C1432</color>
 
     <color name="background">@color/blue_dark</color>
+
 </resources>

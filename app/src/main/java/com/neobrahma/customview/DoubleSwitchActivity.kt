@@ -3,10 +3,10 @@ package com.neobrahma.customview
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.switch.SwitchItem
 import com.neobrahma.customview.views.switch.AbstractSwitchView
 import com.neobrahma.customview.views.switch.SwitchHalfCircleView
-import com.neobrahma.customview.views.switch.TypeResource
 
 class DoubleSwitchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
