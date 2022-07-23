@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomView">
         <activity
-            android:name=".JoypadCircleActivity"
+            android:name=".RemoteControlActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
