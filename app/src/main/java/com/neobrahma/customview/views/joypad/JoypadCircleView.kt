@@ -3,12 +3,10 @@ package com.neobrahma.customview.views.joypad
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import androidx.core.content.ContextCompat
 import com.neobrahma.customview.R
 import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.helper.*
-import com.neobrahma.customview.views.switch.SwitchItem
 
 class JoypadCircleView : AbstractJoypadView {
 
@@ -76,9 +74,7 @@ class JoypadCircleView : AbstractJoypadView {
             x = rectShape.centerX()
             y = rectShape.top + (rectShape.height() / 8)
         }
-    }
 
-    override fun initBounds(items: List<JoypadItem>) {
         val start = 0.75f
         val delta = 1f / (items.size * 2)
         tabPositionGradient[0] = start - delta
@@ -87,7 +83,9 @@ class JoypadCircleView : AbstractJoypadView {
 
         deltaAngle = 360f / items.size
         startAngle = -90 - deltaAngle / 2
+    }
 
+    override fun initBounds() {
         items.forEachIndexed { index, item ->
             val pointItem = computePositionOnCircle(
                 convertValueToDegree(index * deltaAngle),

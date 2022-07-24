@@ -14,7 +14,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.customview.widget.ExploreByTouchHelper
 import com.neobrahma.customview.views.AbstractCustomView
-import com.neobrahma.customview.views.switch.SwitchItem
 
 abstract class AbstractJoypadView : AbstractCustomView {
 
@@ -37,7 +36,7 @@ abstract class AbstractJoypadView : AbstractCustomView {
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         initVariables(w, h)
-        initBounds(items)
+        initBounds()
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -85,7 +84,7 @@ abstract class AbstractJoypadView : AbstractCustomView {
     }
 
     abstract fun initVariables(width: Int, height: Int)
-    abstract fun initBounds(items: List<JoypadItem>)
+    abstract fun initBounds()
     abstract fun onDrawShape(canvas: Canvas, selectedPosition: Int)
 
     abstract fun isTouchInShape(touchPoint: PointF): Boolean
@@ -97,7 +96,7 @@ abstract class AbstractJoypadView : AbstractCustomView {
         override fun getVirtualViewAt(x: Float, y: Float): Int {
             val pointClick = Point(x.toInt(), y.toInt())
             items.forEachIndexed { index, joypadItem ->
-                if(joypadItem.bound.contains(pointClick)){
+                if (joypadItem.bound.contains(pointClick)) {
                     return index
                 }
             }
