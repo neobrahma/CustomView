@@ -1,11 +1,10 @@
 package com.neobrahma.customview
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.remotecontrol.AbstractRemoteControlView
-import com.neobrahma.customview.views.remotecontrol.RemoteControlCircleView
+import com.neobrahma.customview.views.remotecontrol.SwitchStatelessView
 import com.neobrahma.customview.views.remotecontrol.RemoteControlItem
 
 class RemoteControlCircleActivity : AppCompatActivity() {
@@ -26,7 +25,7 @@ class RemoteControlCircleActivity : AppCompatActivity() {
             )
         )
 
-        findViewById<RemoteControlCircleView>(R.id.view).apply {
+        findViewById<SwitchStatelessView>(R.id.view).apply {
             this.items = items
             this.listener = AbstractRemoteControlView.RemoteControlListener {
 //                Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()

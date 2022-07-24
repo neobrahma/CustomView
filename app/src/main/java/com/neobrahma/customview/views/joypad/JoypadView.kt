@@ -8,7 +8,7 @@ import com.neobrahma.customview.R
 import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.helper.*
 
-class JoypadCircleView : AbstractJoypadView {
+class JoypadView : AbstractJoypadView {
 
     private val stroke = context.resources.getDimension(R.dimen.stroke)
     private val iconSize = context.resources.getDimension(R.dimen.icon_size)

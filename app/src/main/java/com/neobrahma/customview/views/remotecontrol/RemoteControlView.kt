@@ -9,7 +9,7 @@ import com.neobrahma.customview.R
 import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.helper.getVectorBitmapFromDrawable
 
-class RemoteControlRectView : AbstractRemoteControlView {
+class RemoteControlView : AbstractRemoteControlView {
 
     private val stroke = context.resources.getDimension(R.dimen.stroke)
     private val iconSize = context.resources.getDimension(R.dimen.icon_size)

@@ -9,7 +9,7 @@ import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.helper.computeDistanceSegment
 import com.neobrahma.customview.views.helper.getVectorBitmapFromDrawable
 
-class SwitchHalfCircleView : AbstractSwitchView {
+class SwitchDoubleCanalView : AbstractSwitchView {
 
     enum class Position(val value: Int) {
         LEFT(1),

@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.switch.AbstractSwitchView
-import com.neobrahma.customview.views.switch.SwitchHalfCircleView
+import com.neobrahma.customview.views.switch.SwitchDoubleCanalView
 import com.neobrahma.customview.views.switch.SwitchItem
 
 class DoubleSwitchActivity : AppCompatActivity() {
@@ -43,19 +43,19 @@ class DoubleSwitchActivity : AppCompatActivity() {
             )
         )
 
-        findViewById<SwitchHalfCircleView>(R.id.switch1).apply {
+        findViewById<SwitchDoubleCanalView>(R.id.switch1).apply {
             items = items1
             isChecked = true
-            direction = SwitchHalfCircleView.Position.LEFT
+            direction = SwitchDoubleCanalView.Position.LEFT
             listener = AbstractSwitchView.SwitchListener {
                 Log.d("SwitchActivity", "onClickItem: switch1 $it")
             }
         }
 
-        findViewById<SwitchHalfCircleView>(R.id.switch2).apply {
+        findViewById<SwitchDoubleCanalView>(R.id.switch2).apply {
             items = items2
             isChecked = false
-            direction = SwitchHalfCircleView.Position.RIGHT
+            direction = SwitchDoubleCanalView.Position.RIGHT
             listener = AbstractSwitchView.SwitchListener {
                 Log.d("SwitchActivity", "onClickItem: switch2 $it")
             }

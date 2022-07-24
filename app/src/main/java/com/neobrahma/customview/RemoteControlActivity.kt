@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.remotecontrol.AbstractRemoteControlView
 import com.neobrahma.customview.views.remotecontrol.RemoteControlItem
-import com.neobrahma.customview.views.remotecontrol.RemoteControlRectView
+import com.neobrahma.customview.views.remotecontrol.RemoteControlView
 
 class RemoteControlActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class RemoteControlActivity : AppCompatActivity() {
             )
         )
 
-        findViewById<RemoteControlRectView>(R.id.view).apply {
+        findViewById<RemoteControlView>(R.id.view).apply {
             this.items = items
             this.columns = 1
             this.listener = AbstractRemoteControlView.RemoteControlListener {

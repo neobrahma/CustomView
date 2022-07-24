@@ -7,7 +7,7 @@
     tools:context=".SwitchActivity"
     android:background="@color/blue_dark">
 
-    <com.neobrahma.customview.views.remotecontrol.RemoteControlRectView
+    <com.neobrahma.customview.views.remotecontrol.RemoteControlView
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

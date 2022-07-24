@@ -5,9 +5,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.neobrahma.customview.views.TypeResource
 import com.neobrahma.customview.views.joypad.AbstractJoypadView
-import com.neobrahma.customview.views.joypad.JoypadCircleView
+import com.neobrahma.customview.views.joypad.JoypadView
 import com.neobrahma.customview.views.joypad.JoypadItem
-import com.neobrahma.customview.views.switch.SwitchItem
 
 class JoypadCircleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +36,7 @@ class JoypadCircleActivity : AppCompatActivity() {
             )
         )
 
-        findViewById<JoypadCircleView>(R.id.view).apply {
+        findViewById<JoypadView>(R.id.view).apply {
             this.items = items
             listener = AbstractJoypadView.JoypadListener {
                 Log.e("JoypadCircleActivity", "on selected position : $it")

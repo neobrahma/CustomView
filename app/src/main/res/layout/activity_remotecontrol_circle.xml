@@ -7,7 +7,7 @@
     tools:context=".SwitchActivity"
     android:background="@color/blue_dark">
 
-    <com.neobrahma.customview.views.remotecontrol.RemoteControlCircleView
+    <com.neobrahma.customview.views.remotecontrol.SwitchStatelessView
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
