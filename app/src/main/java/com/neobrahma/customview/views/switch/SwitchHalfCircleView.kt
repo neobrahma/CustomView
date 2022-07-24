@@ -24,14 +24,14 @@ class SwitchHalfCircleView : AbstractSwitchView {
     private val centerPoint = PointF(0f, 0f)
     private var rayon = 0f
 
-    private val xMode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-
     private var delta = 0f
 
     private val icons = mutableMapOf<Int, Bitmap>()
 
     private var minX = 0f
     private var maxX = 0f
+
+    private val path = Path()
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         strokeWidth = stroke
@@ -101,9 +101,11 @@ class SwitchHalfCircleView : AbstractSwitchView {
         }
 
         delta = rectShape.height() / 2
+
+        path.addArc(rectShape, 0f, 360f)
     }
 
-    override fun initBounds(items: List<SwitchItem>) {
+    override fun initBounds() {
         items.forEachIndexed { index, item ->
             when (item.typeResource) {
                 TypeResource.STRING -> {
@@ -137,7 +139,6 @@ class SwitchHalfCircleView : AbstractSwitchView {
 
     override fun onDrawShape(
         canvas: Canvas,
-        items: List<SwitchItem>,
         selectedPosition: Int,
         isHoverDisplayed: Boolean
     ) {
@@ -211,18 +212,12 @@ class SwitchHalfCircleView : AbstractSwitchView {
     }
 
     private fun drawSelectedItem(canvas: Canvas, position: Int) {
-        //draw source
-        paint.apply {
-            style = Paint.Style.FILL
-            color = ContextCompat.getColor(context, R.color.background)
-        }
-        canvas.drawArc(rectShape, 0f, 360f, true, paint)
-        //draw destination
         paint.apply {
             style = Paint.Style.FILL
             color = ContextCompat.getColor(context, R.color.red)
-            xfermode = xMode
         }
+        canvas.save()
+        canvas.clipPath(path)
         canvas.drawRect(
             rectSelected.left,
             rectSelected.top + position * delta,
@@ -230,7 +225,7 @@ class SwitchHalfCircleView : AbstractSwitchView {
             rectSelected.bottom + position * delta,
             paint
         )
-        paint.xfermode = null
+        canvas.restore()
     }
 
     override fun isTouchInShape(touchPoint: PointF): Boolean {

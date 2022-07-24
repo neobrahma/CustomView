@@ -12,7 +12,15 @@ import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 
 abstract class AbstractSwitchView : View {
 
-    private var isChecked = false
+    var isChecked = false
+        set(value) {
+            field = value
+            selectedPosition = if (value) {
+                0
+            } else {
+                1
+            }
+        }
     private var selectedPosition = 1
     private var isHoverDisplayed = false
 
@@ -31,14 +39,13 @@ abstract class AbstractSwitchView : View {
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         initVariables(w, h)
-        initBounds(items)
+        initBounds()
         updateDescription()
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        setLayerType(LAYER_TYPE_HARDWARE, null)
-        onDrawShape(canvas, items, selectedPosition, isHoverDisplayed)
+        onDrawShape(canvas, selectedPosition, isHoverDisplayed)
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -71,11 +78,6 @@ abstract class AbstractSwitchView : View {
 
     private fun performActionClick() {
         isChecked = !isChecked
-        selectedPosition = if (isChecked) {
-            0
-        } else {
-            1
-        }
         updateDescription()
         listener?.onClickItem(isChecked)
     }
@@ -96,10 +98,9 @@ abstract class AbstractSwitchView : View {
     }
 
     abstract fun initVariables(width: Int, height: Int)
-    abstract fun initBounds(items: List<SwitchItem>)
+    abstract fun initBounds()
     abstract fun onDrawShape(
         canvas: Canvas,
-        items: List<SwitchItem>,
         selectedPosition: Int,
         isHoverDisplayed: Boolean
     )

@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.neobrahma.customview.views.TypeResource
-import com.neobrahma.customview.views.switch.SwitchItem
 import com.neobrahma.customview.views.switch.AbstractSwitchView
 import com.neobrahma.customview.views.switch.SwitchHalfCircleView
+import com.neobrahma.customview.views.switch.SwitchItem
 
 class DoubleSwitchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +45,7 @@ class DoubleSwitchActivity : AppCompatActivity() {
 
         findViewById<SwitchHalfCircleView>(R.id.switch1).apply {
             items = items1
+            isChecked = true
             direction = SwitchHalfCircleView.Position.LEFT
             listener = AbstractSwitchView.SwitchListener {
                 Log.d("SwitchActivity", "onClickItem: switch1 $it")
@@ -53,6 +54,7 @@ class DoubleSwitchActivity : AppCompatActivity() {
 
         findViewById<SwitchHalfCircleView>(R.id.switch2).apply {
             items = items2
+            isChecked = false
             direction = SwitchHalfCircleView.Position.RIGHT
             listener = AbstractSwitchView.SwitchListener {
                 Log.d("SwitchActivity", "onClickItem: switch2 $it")

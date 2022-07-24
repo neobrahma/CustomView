@@ -31,6 +31,7 @@ class SwitchActivity : AppCompatActivity() {
 
         findViewById<SwitchCircleView>(R.id.view).apply {
             this.items = items
+            isChecked = true
             listener = AbstractSwitchView.SwitchListener {
                 Log.d("SwitchActivity", "onClickItem: $it")
             }
