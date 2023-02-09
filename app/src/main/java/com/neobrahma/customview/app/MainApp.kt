@@ -10,6 +10,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.neobrahma.customview.R
 import com.neobrahma.customview.screens.*
+import com.neobrahma.customview.screens.remotecontrol.RemoteControl3ButtonsScreen
+import com.neobrahma.customview.screens.remotecontrol.RemoteControl4ButtonsScreen
+import com.neobrahma.customview.screens.remotecontrol.RemoteControlCircleButtonsScreen
+import com.neobrahma.customview.screens.remotecontrol.StatelessSwitchScreen
 import com.neobrahma.customview.screens.switches.DoubleSwitchScreen
 import com.neobrahma.customview.screens.switches.SwitchLedScreen
 import com.neobrahma.customview.screens.switches.SwitchScreen
@@ -33,6 +37,18 @@ fun MainApp() {
             }
             composable(route = DOUBLE_SWITCH_SCREEN) {
                 DoubleSwitchScreen()
+            }
+            composable(route = STATELESS_SWITCH_SCREEN) {
+                StatelessSwitchScreen()
+            }
+            composable(route = RC_RECT_BUTTONS_SCREEN) {
+                RemoteControl3ButtonsScreen()
+            }
+            composable(route = RC_CIRCLE_BUTTONS_SCREEN) {
+                RemoteControlCircleButtonsScreen()
+            }
+            composable(route = RC_4_BUTTONS_SCREEN) {
+                RemoteControl4ButtonsScreen()
             }
         }
     }

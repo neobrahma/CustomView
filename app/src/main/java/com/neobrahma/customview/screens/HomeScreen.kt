@@ -15,9 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.neobrahma.customview.R
-import com.neobrahma.customview.app.DOUBLE_SWITCH_SCREEN
-import com.neobrahma.customview.app.SWITCH_SCREEN
-import com.neobrahma.customview.app.SWITCH_SCREEN_LED
+import com.neobrahma.customview.app.*
 
 sealed class ItemList {
     data class TitleItem(val title: String) : ItemList()
@@ -30,7 +28,12 @@ fun HomeScreen(navController: NavController) {
         ItemList.TitleItem("Abstract Switch View"),
         ItemList.ButtonItem("switch 1 Enki", SWITCH_SCREEN),
         ItemList.ButtonItem("switch 2 LED", SWITCH_SCREEN_LED),
-        ItemList.ButtonItem("double switch Enki", DOUBLE_SWITCH_SCREEN)
+        ItemList.ButtonItem("double switch Enki", DOUBLE_SWITCH_SCREEN),
+        ItemList.TitleItem("Abstract Remote Control View"),
+        ItemList.ButtonItem("stateless switch Enki", STATELESS_SWITCH_SCREEN),
+        ItemList.ButtonItem("Remote control 3 buttons Enki", RC_RECT_BUTTONS_SCREEN),
+        ItemList.ButtonItem("Remote control 4 buttons Enki", RC_4_BUTTONS_SCREEN),
+        ItemList.ButtonItem("Remote control Circle 3 buttons", RC_CIRCLE_BUTTONS_SCREEN)
     )
 
     LazyColumn(
