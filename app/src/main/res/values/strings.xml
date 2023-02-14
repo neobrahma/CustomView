@@ -4,6 +4,10 @@
     <string name="state_switch_on">ON</string>
     <string name="state_switch_off">OFF</string>
 
+    <string name="action_1">action 1</string>
+    <string name="action_2">action 2</string>
+    <string name="action_3">action 2</string>
+
     <string name="content_description_switch_on">Interupteur, la prise est allumée</string>
     <string name="switch_action_off">eteindre la prise</string>
     <string name="content_description_switch_off">Interupteur, La prise est éteinte</string>

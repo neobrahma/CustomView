@@ -27,6 +27,8 @@ class RemoteControlView : AbstractRemoteControlView {
 
     private val heightText = resources.getDimensionPixelSize(R.dimen.text)
 
+    private val listSquareData: MutableList<MutableList<SquareData>> = mutableListOf()
+
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         strokeWidth = stroke
         textSize = resources.getDimension(R.dimen.text)
@@ -48,7 +50,27 @@ class RemoteControlView : AbstractRemoteControlView {
             bottom = height - padding
         }
 
-        rows = items.size / columns
+        var positionCell = 0
+        items.forEachIndexed { index, item ->
+            if (item.weight == 1) {
+                val data = SquareData(index, item.weight)
+                listSquareData.add(mutableListOf(data))
+                positionCell++
+            } else {
+                if (listSquareData.size == positionCell) {
+                    val data = SquareData(index, item.weight)
+                    listSquareData.add(mutableListOf(data))
+                } else {
+                    val data = SquareData(index, item.weight)
+                    listSquareData[positionCell].add(data)
+                    if (listSquareData[positionCell].size == data.weight) {
+                        positionCell++
+                    }
+                }
+            }
+        }
+
+        rows = listSquareData.size / columns
 
         deltaX = rectShape.width() / columns
         deltaY = rectShape.height() / rows
@@ -60,37 +82,83 @@ class RemoteControlView : AbstractRemoteControlView {
     }
 
     override fun initBounds() {
-        items.forEachIndexed { index, item ->
+        listSquareData.forEachIndexed { index, item ->
             val row = index / columns
             val column = index % columns
-            when (item.typeResource) {
-                TypeResource.STRING -> {
-                    val widthText =
-                        paint.measureText(resources.getText(item.idResource).toString())
-                            .toInt()
-                    item.bound.apply {
-                        left =
-                            ((pointCenterItem.x - ((widthText + iconSize) / 2)) + deltaX.toInt() * column).toInt()
-                        right = left + widthText + iconSize.toInt()
-                        top =
-                            ((pointCenterItem.y - ((heightText + iconSize) / 2)) + deltaY.toInt() * row).toInt()
-                        bottom = (top + heightText + iconSize).toInt()
+            val weight = item.size
+
+            if (weight == 1) {
+                val itemRC = items[item[0].id]
+                when (itemRC.typeResource) {
+                    TypeResource.STRING -> {
+                        computeBoundForText(itemRC, column, row, weight, 0)
+                    }
+                    TypeResource.DRAWABLE -> {
+                        computeBoundForDrawable(itemRC, item[0].id, column, row, weight, 0)
                     }
                 }
-                TypeResource.DRAWABLE -> {
-                    val bitmap =
-                        getVectorBitmapFromDrawable(context, item.idResource, iconSize.toInt())
-                    icons[index] = bitmap
-                    item.bound.apply {
-                        left =
-                            ((pointCenterItem.x - iconSize / 2) + deltaX.toInt() * column).toInt()
-                        right = (left + iconSize).toInt()
-                        top =
-                            ((pointCenterItem.y - iconSize / 2) + deltaY.toInt() * row).toInt()
-                        bottom = (top + iconSize).toInt()
+            } else {
+                val newDeltaY = deltaY / weight
+                item.forEachIndexed { index, cellData ->
+                    val itemRC = items[cellData.id]
+                    when (itemRC.typeResource) {
+                        TypeResource.STRING -> {
+                            computeBoundForText(itemRC, column, row, weight, newDeltaY.toInt() * index)
+                        }
+                        TypeResource.DRAWABLE -> {
+                            computeBoundForDrawable(
+                                itemRC,
+                                cellData.id,
+                                column,
+                                row,
+                                weight,
+                                newDeltaY.toInt() * index
+                            )
+                        }
                     }
                 }
             }
+        }
+    }
+
+    private fun computeBoundForDrawable(
+        itemRC: RemoteControlItem,
+        id: Int,
+        column: Int,
+        row: Int,
+        weight: Int,
+        newDeltaY: Int
+    ) {
+        val bitmap =
+            getVectorBitmapFromDrawable(context, itemRC.idResource, iconSize.toInt())
+        icons[id] = bitmap
+        itemRC.bound.apply {
+            left =
+                ((pointCenterItem.x - iconSize / 2) + deltaX.toInt() * column).toInt()
+            right = (left + iconSize).toInt()
+            top =
+                ((pointCenterItem.y / weight - iconSize / 2) + deltaY.toInt() * row + newDeltaY).toInt()
+            bottom = (top + iconSize).toInt()
+        }
+    }
+
+    private fun computeBoundForText(
+        itemRC: RemoteControlItem,
+        column: Int,
+        row: Int,
+        weight: Int,
+        newDeltaY: Int
+    ) {
+        val widthText =
+            paint.measureText(resources.getText(itemRC.idResource).toString())
+                .toInt()
+        itemRC.bound.apply {
+            left =
+                ((pointCenterItem.x - ((widthText + iconSize) / 2)) + deltaX.toInt() * column).toInt()
+            right = left + widthText + iconSize.toInt()
+            top =
+                ((pointCenterItem.y/weight - ((heightText + iconSize) / 2)) + deltaY.toInt() * row + newDeltaY).toInt()
+            bottom = (top + heightText + iconSize).toInt()
         }
     }
 
@@ -98,7 +166,7 @@ class RemoteControlView : AbstractRemoteControlView {
         drawBackground(canvas)
         drawHover(canvas, hoverPosition)
         drawContent(canvas)
-        drawStroke(canvas)
+        drawGrid(canvas)
     }
 
     private fun drawBackground(canvas: Canvas) {
@@ -116,16 +184,35 @@ class RemoteControlView : AbstractRemoteControlView {
                 style = Paint.Style.FILL
                 color = ContextCompat.getColor(context, R.color.orange)
             }
-            val row = position / columns
-            val column = position % columns
+
+            var positionSquare = 0
+            var weight = 1
+            var positionY = 0
+            listSquareData.forEachIndexed { index, cellData ->
+                if (cellData.size == 1 && cellData[0].id == position) {
+                    positionSquare = index
+                } else {
+                    val quantity = cellData.size
+                    val positionStartList = cellData[0].id
+                    if (positionStartList <= position && position < positionStartList + quantity) {
+                        positionSquare = index
+                        weight = quantity
+                        positionY = position - positionStartList
+                    }
+                }
+            }
+
+            val row = positionSquare / columns
+            val column = positionSquare % columns
+
             val rect = RectF().apply {
                 left = rectShape.left + deltaX * column
                 right = left + deltaX
-                top = rectShape.top + deltaY * row
-                bottom = top + deltaY
+                top = rectShape.top + deltaY * row + (deltaY / weight) * positionY
+                bottom = top + (deltaY / weight)
             }
             canvas.clipRect(rect)
-            canvas.drawRoundRect(rectShape,roundRect, roundRect, paint)
+            canvas.drawRoundRect(rectShape, roundRect, roundRect, paint)
             canvas.restore()
         }
     }
@@ -167,7 +254,7 @@ class RemoteControlView : AbstractRemoteControlView {
         )
     }
 
-    private fun drawStroke(canvas: Canvas) {
+    private fun drawGrid(canvas: Canvas) {
         paint.apply {
             style = Paint.Style.STROKE
             color = ContextCompat.getColor(context, R.color.purple)
@@ -183,6 +270,23 @@ class RemoteControlView : AbstractRemoteControlView {
             val x = deltaX * column
             canvas.drawLine(x * column, rectShape.top, x * column, rectShape.bottom, paint)
         }
+
+        listSquareData.forEachIndexed { index, cellData ->
+            val weight = cellData.size
+            if (weight != 1) {
+                val heightY = deltaY / weight
+                val row = index / this.columns
+                val column = index % this.columns
+                for (i in 1 until weight) {
+                    canvas.drawLine(
+                        rectShape.left + column * deltaX,
+                        rectShape.top + deltaY * row + heightY * i,
+                        rectShape.left + column * deltaX + deltaX,
+                        rectShape.top + deltaY * row + heightY * i, paint
+                    )
+                }
+            }
+        }
     }
 
     override fun isTouchInShape(touchPoint: PointF): Boolean {
@@ -192,6 +296,26 @@ class RemoteControlView : AbstractRemoteControlView {
     override fun computeSelectedPosition(touchPoint: PointF): Int {
         val row = ((touchPoint.y - rectShape.top) / deltaY).toInt()
         val column = ((touchPoint.x - rectShape.left) / deltaX).toInt()
-        return row * columns + column
+        val positionSquare = row * columns + column
+
+        val weight = listSquareData[positionSquare].size
+        var positionItem = 0
+        if (weight != 1) {
+            positionItem =
+                ((touchPoint.y - rectShape.top - deltaY * row) / (deltaY / weight)).toInt()
+
+        }
+
+        var quantityItemBeforeSquare = 0
+        for (i in 0 until positionSquare) {
+            quantityItemBeforeSquare += listSquareData[i].size
+        }
+
+        return quantityItemBeforeSquare + positionItem
     }
 }
+
+data class SquareData(
+    val id: Int,
+    val weight: Int,
+)

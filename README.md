@@ -29,6 +29,10 @@ Used for a remote control
 |---------------------------------------------------|--------------------------------------------------|
 | ![rc_3](https://user-images.githubusercontent.com/96651172/217869044-cc50ef12-1438-40cb-b023-f8ebd0310922.png) | ![rc_4](https://user-images.githubusercontent.com/96651172/217869051-a4ad5b89-3b44-4bb5-a1d1-732430cd5149.png) |
 
+| Column = 1 & list with 4 items & weight       | Column = 2 & list with 7 items & weight     | 
+|---------------------------------------------------|--------------------------------------------------|
+| ![Screenshot_20230214_183613](https://user-images.githubusercontent.com/96651172/218814816-845e3aa6-f260-4b9e-a9f4-3a82b7ceb5b2.png) | ![remote_x](https://user-images.githubusercontent.com/96651172/218814850-bd751614-975e-45f9-8326-d2196c360bec.png) |
+
 Remote control with a circle shape, the first item in the list, will be the button in center.
 
 | list with 3 items       | list with 4 items     | 
