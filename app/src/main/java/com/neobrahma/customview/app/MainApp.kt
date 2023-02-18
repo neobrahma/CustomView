@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.neobrahma.customview.R
 import com.neobrahma.customview.screens.*
 import com.neobrahma.customview.screens.joypad.JoypadScreen
+import com.neobrahma.customview.screens.picker.BulbScreen
 import com.neobrahma.customview.screens.remotecontrol.*
 import com.neobrahma.customview.screens.switches.DoubleSwitchScreen
 import com.neobrahma.customview.screens.switches.SwitchLedScreen
@@ -56,6 +57,9 @@ fun MainApp() {
             }
             composable(route = JOYPAD_SCREEN) {
                 JoypadScreen()
+            }
+            composable(route = BULB_SCREEN) {
+                BulbScreen()
             }
         }
     }

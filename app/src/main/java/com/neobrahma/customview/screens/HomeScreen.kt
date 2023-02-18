@@ -24,7 +24,7 @@ sealed class ItemList {
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    val list: List<ItemList> = listOf<ItemList>(
+    val list: List<ItemList> = listOf(
         ItemList.TitleItem("Abstract Switch View"),
         ItemList.ButtonItem("switch 1 Enki", SWITCH_SCREEN),
         ItemList.ButtonItem("switch 2 LED", SWITCH_SCREEN_LED),
@@ -37,7 +37,9 @@ fun HomeScreen(navController: NavController) {
         ItemList.ButtonItem("Remote control 4 buttons Hue", RC_4_BUTTONS_SCREEN_HUE),
         ItemList.ButtonItem("Remote control X buttons with weight", RC_X_BUTTONS_SCREEN),
         ItemList.TitleItem("Abstract joypad View"),
-        ItemList.ButtonItem("Joypad 4 buttons", JOYPAD_SCREEN)
+        ItemList.ButtonItem("Joypad 4 buttons", JOYPAD_SCREEN),
+        ItemList.TitleItem("others"),
+        ItemList.ButtonItem("Color picker screen", BULB_SCREEN)
     )
 
     LazyColumn(

@@ -14,3 +14,5 @@ const val RC_4_BUTTONS_SCREEN_HUE = "remote_control_4_buttons_hue"
 const val RC_X_BUTTONS_SCREEN = "remote_control_X_buttons"
 
 const val JOYPAD_SCREEN = "joypad"
+
+const val BULB_SCREEN = "bulb"

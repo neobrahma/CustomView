@@ -45,6 +45,6 @@ Joypad
 |---------------------------------------------------|--------------------------------------------------|
 | ![joypad](https://user-images.githubusercontent.com/96651172/219856668-b2783c0e-9304-4b28-8cd6-eafba2e88500.png) | ![joypad_5](https://user-images.githubusercontent.com/96651172/219856687-f4cb1a8c-14d0-4220-b16c-cfbca9b3fdb1.png) |
 
+Screen Color Picker view 3 bulbs
 
-
-
+![picker](https://user-images.githubusercontent.com/96651172/219857165-b36a8eea-b38a-48e8-9331-fdc6e8b30c87.png)
