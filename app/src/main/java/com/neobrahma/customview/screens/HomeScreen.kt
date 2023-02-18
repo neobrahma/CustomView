@@ -35,7 +35,9 @@ fun HomeScreen(navController: NavController) {
         ItemList.ButtonItem("Remote control 4 buttons Enki", RC_4_BUTTONS_SCREEN),
         ItemList.ButtonItem("Remote control Circle 3 buttons", RC_CIRCLE_BUTTONS_SCREEN),
         ItemList.ButtonItem("Remote control 4 buttons Hue", RC_4_BUTTONS_SCREEN_HUE),
-        ItemList.ButtonItem("Remote control X buttons with weight", RC_X_BUTTONS_SCREEN)
+        ItemList.ButtonItem("Remote control X buttons with weight", RC_X_BUTTONS_SCREEN),
+        ItemList.TitleItem("Abstract joypad View"),
+        ItemList.ButtonItem("Joypad 4 buttons", JOYPAD_SCREEN)
     )
 
     LazyColumn(

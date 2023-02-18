@@ -38,3 +38,13 @@ Remote control with a circle shape, the first item in the list, will be the butt
 | list with 3 items       | list with 4 items     | 
 |---------------------------------------------------|--------------------------------------------------|
 | ![rc_circle](https://user-images.githubusercontent.com/96651172/217869577-92cc398b-2c4c-4014-b03c-8756ea4d5a8e.png) | ![rc_circle_4](https://user-images.githubusercontent.com/96651172/217869569-c8088940-e89c-4e1e-8d85-da689f36f131.png) |
+
+Joypad
+
+| list with 4 items       | list with 5 items     | 
+|---------------------------------------------------|--------------------------------------------------|
+| ![joypad](https://user-images.githubusercontent.com/96651172/219856668-b2783c0e-9304-4b28-8cd6-eafba2e88500.png) | ![joypad_5](https://user-images.githubusercontent.com/96651172/219856687-f4cb1a8c-14d0-4220-b16c-cfbca9b3fdb1.png) |
+
+
+
+
