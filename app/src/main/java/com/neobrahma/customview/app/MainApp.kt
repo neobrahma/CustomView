@@ -16,6 +16,7 @@ import com.neobrahma.customview.screens.remotecontrol.*
 import com.neobrahma.customview.screens.switches.DoubleSwitchScreen
 import com.neobrahma.customview.screens.switches.SwitchLedScreen
 import com.neobrahma.customview.screens.switches.SwitchScreen
+import com.neobrahma.customview.screens.test.ShapeOkooScreen
 
 @Composable
 fun MainApp() {
@@ -60,6 +61,9 @@ fun MainApp() {
             }
             composable(route = BULB_SCREEN) {
                 BulbScreen()
+            }
+            composable(route = PATH_BACKGROUND_OKOO) {
+                ShapeOkooScreen()
             }
         }
     }

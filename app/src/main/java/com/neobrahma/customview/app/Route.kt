@@ -16,3 +16,5 @@ const val RC_X_BUTTONS_SCREEN = "remote_control_X_buttons"
 const val JOYPAD_SCREEN = "joypad"
 
 const val BULB_SCREEN = "bulb"
+
+const val PATH_BACKGROUND_OKOO = "PATH_BACKGROUND_OKOO"

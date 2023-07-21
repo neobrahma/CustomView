@@ -15,7 +15,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.neobrahma.customview.R
-import com.neobrahma.customview.app.*
+import com.neobrahma.customview.app.BULB_SCREEN
+import com.neobrahma.customview.app.DOUBLE_SWITCH_SCREEN
+import com.neobrahma.customview.app.JOYPAD_SCREEN
+import com.neobrahma.customview.app.RC_4_BUTTONS_SCREEN
+import com.neobrahma.customview.app.RC_4_BUTTONS_SCREEN_HUE
+import com.neobrahma.customview.app.RC_CIRCLE_BUTTONS_SCREEN
+import com.neobrahma.customview.app.RC_RECT_BUTTONS_SCREEN
+import com.neobrahma.customview.app.RC_X_BUTTONS_SCREEN
+import com.neobrahma.customview.app.STATELESS_SWITCH_SCREEN
+import com.neobrahma.customview.app.SWITCH_SCREEN
+import com.neobrahma.customview.app.SWITCH_SCREEN_LED
+import com.neobrahma.customview.app.PATH_BACKGROUND_OKOO
 
 sealed class ItemList {
     data class TitleItem(val title: String) : ItemList()
@@ -39,7 +50,8 @@ fun HomeScreen(navController: NavController) {
         ItemList.TitleItem("Abstract joypad View"),
         ItemList.ButtonItem("Joypad 4 buttons", JOYPAD_SCREEN),
         ItemList.TitleItem("others"),
-        ItemList.ButtonItem("Color picker screen", BULB_SCREEN)
+        ItemList.ButtonItem("Color picker screen", BULB_SCREEN),
+        ItemList.ButtonItem("Path Background Okoo", PATH_BACKGROUND_OKOO),
     )
 
     LazyColumn(
